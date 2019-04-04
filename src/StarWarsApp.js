@@ -25,7 +25,7 @@ class WeatherService extends Component{
 
   componentDidMount(){
     const zip = this.props.zip;
-    const apiURL = "https://swapi.co/api/" +
+    const apiURL = "https://swapi.co/api/planets" +
                     zip+"/";
     fetch(apiURL)
       .then( res => res.json() )
@@ -37,11 +37,11 @@ class WeatherService extends Component{
     if(!weatherData) return ( <div>Loading data...</div> );
     return( 
      <div>
-       <p>name:{weatherData.name}</p>
-       <p>climate: {weatherData.climate }</p>
-       <p>gravity: {weatherData.gravity}</p>
-       <p>terrain: {weatherData.terrain}</p>
-       <p>surface_water: {weatherData.surface_water}</p>
+       <p>name:{weatherData[0].results.name}</p>
+       <p>climate: {weatherData.results.climate }</p>
+       <p>gravity: {weatherData.results.gravity}</p>
+       <p>terrain: {weatherData.results.terrain}</p>
+       <p>surface_water: {weatherData.results.surface_water}</p>
      </div>
     );
   }
